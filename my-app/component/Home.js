@@ -1,27 +1,38 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Text, View, Image, Button, TouchableOpacity, FlatList } from 'react-native';
 import { styles } from '../style/catalogo.js';
-import products from '../products.js';
 
 export default function Home({ navigation }) {
 
-  const [data] = useState(products)
+  const [products, setProducts] = useState([])
 
-  const handleProductPress = (productId) => {
-    navigation.navigate('Product_detail', { productId: productId });
-  };
+  useEffect(() => {
+    fetchProducts();
+  }, []);
+
+  const fetchProducts = async () => {
+    try {
+      const response = await fetch('https://fakestoreapi.com/products')
+      const data = await response.json();
+      const filteredProducts = data.filter(product => ![5, 6, 7, 8, 10, 11, 13].includes(product.id));
+      setProducts(filteredProducts);
+    } catch (error) {
+      console.error('Error buscando los productos: ', error);
+    }
+  }
+
+  const sendId = (productId) => {
+    navigation.navigate('Product_detail', { productId });
+  }
 
   const showProducts = ({ item }) => {
     return (
-      <View style={styles.productGrid}>
         <View key={item.id} style={styles.cardRow}>
-          <TouchableOpacity onPress={() => handleProductPress(item.id)} style={styles.card}>
-            <Image source={item.image} style={styles.image} />
-            <Text style={styles.productName}>{item.name}</Text>
-            <Text style={styles.productDescription}>{item.description}</Text>
+          <TouchableOpacity style={styles.card} onPress={() => sendId(item.id)}>
+            <Image source={{ uri: item.image }} style={styles.image} />
+            <Text style>{item.category}</Text>
           </TouchableOpacity>
         </View>
-      </View>
     );
   }
 
@@ -32,8 +43,10 @@ export default function Home({ navigation }) {
         <Button title='Contactos' onPress={() => navigation.navigate('Contactos')} />
       </View>
       <FlatList
-        data={data}
+        data={products}
         renderItem={showProducts}
+        keyExtractor={(item) => item.id.toString()
+        }
       />
     </View>
   );

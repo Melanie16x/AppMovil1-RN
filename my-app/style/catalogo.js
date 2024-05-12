@@ -1,60 +1,54 @@
-import { StyleSheet } from "react-native";
+import { ScaledSheet } from 'react-native-size-matters';
+import { ms } from 'react-native-size-matters';
 
-export const styles = StyleSheet.create({
+export const styles = ScaledSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff'
   },
   description: {
-    fontSize: 16,
+    fontSize: ms(16),
     textAlign: 'center',
-    marginBottom: 20,
-    margin: 10,
+    marginBottom: ms(20),
+    margin: ms(10),
     borderWidth: 1,
     borderColor: '#ccc',
-    borderRadius: 10,
+    borderRadius: ms(10)
   },
   title: {
-    fontSize: 40,
+    fontSize: ms(40),
     textAlign: 'center',
-    marginTop: 10,
+    marginTop: ms(10),
     fontWeight: 'bold'
   },
   buttonContainer: {
     flexDirection: 'row',
     justifyContent: 'space-evenly',
-    marginTop: 20,
-    marginBottom: 20
-  },
-  productGrid: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    justifyContent: 'space-between',
-    paddingHorizontal: 10,
-   
+    marginTop: ms(20),
+    marginBottom: ms(20)
   },
   cardRow: {
-    width: '45%',
-    marginBottom: 10,
+    width: '100%',
+    marginBottom: ms(10),
   },
   card: {
     borderWidth: 1,
     borderColor: '#ccc',
-    borderRadius: 8,
-    padding: 10,
+    borderRadius: ms(8),
+    padding: ms(10),
     alignItems: 'center',
   },
   image: {
-    width: 100,
-    height: 100,
-    marginBottom: 10,
+    width: ms(90),
+    height: ms(120),
+    marginBottom: ms(10),
   },
   productName: {
-    fontSize: 18,
+    fontSize: ms(18),
     fontWeight: 'bold',
   },
   productDescription: {
-    fontSize: 14,
+    fontSize: ms(14),
     textAlign: 'center',
   },
   contactList: {
@@ -63,42 +57,51 @@ export const styles = StyleSheet.create({
   contactContainer: {
     borderWidth: 1,
     borderColor: '#ccc',
-    borderRadius: 8,
-    padding: 10,
-    marginBottom: 10,
+    borderRadius: ms(8),
+    padding: ms(10),
+    marginBottom: ms(10),
   },
   contactName: {
-    fontSize: 18,
+    fontSize: ms(18),
     fontWeight: 'bold',
-    marginBottom: 5,
+    marginBottom: ms(5),
   },
   contactInfo: {
-    fontSize: 14,
+    fontSize: ms(14),
   },
   contactTitle: {
-    fontSize: 30,
+    fontSize: ms(30),
     fontWeight: 'bold',
     textAlign: 'center'
   },
   imageProductDetail: {
-    width: 400,
-    height: 400,
-    marginTop: 15
+    width: ms(300),
+    height: ms(400),
+    marginTop: ms(15)
   },
   price: {
-    fontSize: 40,
-    marginTop: 20,
-    margin: 10
+    fontSize: ms(40),
+    marginTop: ms(20),
+    margin: ms(10)
   },
   dues: {
-    margin: 10,
-    marginTop: 20,
-    fontSize: 22,
+    margin: ms(10),
+    marginTop: ms(20),
+    fontSize: ms(22),
   },
-  detail: {
-    fontSize: 20,
+  description: {
+    fontSize: ms(20),
     textAlign: 'center',
-    margin: 10,
+    margin: ms(10),
 
+  },
+  containerLoading: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  loading: {
+    fontSize: ms(40),
+    fontWeight: 'bold'
   }
-});
+})
